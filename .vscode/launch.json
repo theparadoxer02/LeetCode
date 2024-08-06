@@ -1,0 +1,15 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Debug Script",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/tries_implementation.py",
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            "python": "${workspaceFolder}/venv/bin/python"
+        }
+    ]
+}
+
