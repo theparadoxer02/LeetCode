@@ -11,7 +11,6 @@ def countComponents(n, edges):
             if not visited[elem]:
                 dfs(elem, adj_list, visited)
 
-
     adj_list = [[] for _ in range(n)]
     for crs, pre in edges:
         adj_list[crs].append(pre)
