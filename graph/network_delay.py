@@ -30,7 +30,7 @@ def networkDelayTime(times: list[list[int]], n: int, k: int) -> int:
             for neighbor, weight in graph[curr_node].items():
                 dist = weight + curr_distance
 
-                if dist < distances[curr_node]:
+                if dist < distances[neighbor]:
                     distances[neighbor] = dist
                     heapq.heappush(queue, (dist, neighbor))
 
