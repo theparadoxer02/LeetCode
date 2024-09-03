@@ -9,7 +9,7 @@ def longestCommonSubsequence(text1: str, text2: str) -> int:
 
         if mem_matrix[m][n] != -1:
             print(x[m], y[n])
-            return mem_matrix[m][n] 
+            return mem_matrix[m][n]
 
         if m == 0 or n == 0:
             mem_matrix[m][n] = 0

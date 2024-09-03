@@ -6,30 +6,24 @@ def validPath(
     n: int, edges: List[List[int]], source: int, destination: int
 ) -> bool:
 
-    if not edges:
+    if source == destination:
         return True
 
-    def dfs(graph, node, visited):
+    visited = set()
+
+    def dfs(graph, node):
         if node not in visited:
             visited.add(node)
-            print(visited)
 
             for item in graph[node]:
-                dfs(graph, item, visited)
+                dfs(graph, item)
 
-    graph = {}
-    for edge in edges:
-        u, v = edge[0], edge[1]
-        if u not in graph:
-            graph[u] = []
-        if v not in graph:
-            graph[v] = []
+    graph = {i: [] for i in range(n)}
+    for u, v in edges:
         graph[u].append(v)
         graph[v].append(u)
         
-    visited = set()
-    dfs(graph, source, visited)
-
+    dfs(graph, source)
     return destination in visited
 
 
@@ -47,5 +41,6 @@ destination = 5
 
 start_time = time.time()
 result = validPath(n=n, edges=edges, source=source, destination=destination)
-print("Process finished --- %s seconds ---" % (time.time() - start_time))
+print(result)
+# print("Process finished --- %s seconds ---" % (time.time() - start_time))
 
