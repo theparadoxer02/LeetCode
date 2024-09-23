@@ -25,9 +25,25 @@ def longestCommonSubsequence(text1: str, text2: str) -> int:
     return get_longest_val(text1, text2, M, N)
 
 
+def longest_common_subsequence(x, y):
+    m, n = len(x), len(y)
+    # Create a 2D array with (m+1) x (n+1)
+    dp = [[0] * (n + 1) for _ in range(m + 1)]
+
+    # Fill the dp table
+    for i in range(1, m + 1):
+        for j in range(1, n + 1):
+            if x[i-1] == y[j-1]:
+                dp[i][j] = 1 + dp[i-1][j-1]
+            else:
+                dp[i][j] = max(dp[i-1][j], dp[i][j-1])
+
+    return dp[m][n]
+
+
 
 # Top Down approach
 text1 = "abcde"
-text2 = "ace" 
-result = longestCommonSubsequence(text1=text1, text2=text2)
+text2 = "ace"
+result = longest_common_subsequence(x=text1, y=text2)
 print(result)
