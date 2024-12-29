@@ -34,6 +34,25 @@ def subsets(nums):
 
     return rest_subsets + new_subsets
 
-nums = [1,2,3]
-result = subsets(nums=nums)
+
+
+def bitwise_subsets(nums):
+    n = len(nums)
+    result = []
+    # Generate all possible subsets (2^n subsets)
+    for i in range(2**n):  # Loop over 0 to 2^n - 1
+        subset = []
+        for j in range(n):  # Check each bit
+            if (i >> j) & 1:  # If the j-th bit is set in i
+                subset.append(nums[j])
+        result.append(subset)
+    return result
+
+
+# Example usage
+nums = [1, 2, 3]
+print(subsets(nums))
+
+nums = [2,5,6]
+result = bitwise_subsets(nums=nums)
 print(result)
