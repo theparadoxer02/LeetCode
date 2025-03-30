@@ -53,10 +53,53 @@ def longestPalindrome(ses: str) -> str:
     return s[i : j + 1]
 
 
+class Solution:
+    def longestPalindrome(self, s: str) -> str:
+        left, right = 0, len(s) - 1
+        max_palin_length = 0
+        final_string = ""
+
+        # m = len(s) - 1
+        # while left < right:
+        while left < right and s[left] != s[right]:
+            left += 1
+            right -= 1
+        
+        while left <= right:
+            if s[left:right+1] == s[left:right+1][::-1]:
+                max_palin_length = max(max_palin_length, right - left + 1)
+                final_string = s[left:right+1]
+                break
+
+            left += 1
+            right += 1
+            
+            
+        
+
+        # left, right = 0, len(s) - 1
+        # while s[left] != s[right] and right >= 0:
+        #     right -= 1
+
+        # while left <= right:
+        #     if s[left:right+1] == s[left:right+1][::-1]:
+        #         max_palin_length = max(max_palin_length, right - left + 1)
+        #         final_string = s[left:right+1]
+        #         break
+
+        #     left += 1
+        #     right += 1    
+
+        return final_string
+            
+            
 
 
-str1 = "cbbd"
-result = longestPalindrome(str1)
+
+str1 = "ac"
+# str1 = "bab"
+s = Solution()
+result = s.longestPalindrome(str1)
 print(result)
 
 
